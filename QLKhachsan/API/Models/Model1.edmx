@@ -1,0 +1,971 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLKhachsanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Chitietdatdichvu">
+          <Key>
+            <PropertyRef Name="IDDV" />
+            <PropertyRef Name="IDDAT" />
+          </Key>
+          <Property Name="IDDV" Type="bigint" Nullable="false" />
+          <Property Name="IDDAT" Type="bigint" Nullable="false" />
+          <Property Name="Soluong" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chitietdatphong">
+          <Key>
+            <PropertyRef Name="Sophong" />
+            <PropertyRef Name="IDDAT" />
+          </Key>
+          <Property Name="Sophong" Type="bigint" Nullable="false" />
+          <Property Name="IDDAT" Type="bigint" Nullable="false" />
+          <Property Name="Ngayden" Type="datetime" Nullable="false" />
+          <Property Name="Ngaydi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Datphong">
+          <Key>
+            <PropertyRef Name="IDDAT" />
+          </Key>
+          <Property Name="IDDAT" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ngaydat" Type="datetime" Nullable="false" />
+          <Property Name="MaNV" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CMT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ghichu" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Dichvu">
+          <Key>
+            <PropertyRef Name="IDDV" />
+          </Key>
+          <Property Name="IDDV" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GiaDV" Type="float" Nullable="false" />
+          <Property Name="DVT" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Hinh" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Mota" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Hoadon">
+          <Key>
+            <PropertyRef Name="MaHD" />
+          </Key>
+          <Property Name="MaHD" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tienphong" Type="float" Nullable="false" />
+          <Property Name="Tiendichvu" Type="float" Nullable="false" />
+          <Property Name="VAT" Type="float" Nullable="false" />
+          <Property Name="Khuyenmai" Type="float" />
+          <Property Name="Ngaylap" Type="datetime" Nullable="false" />
+          <Property Name="IDDAT" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Khachhang">
+          <Key>
+            <PropertyRef Name="CMT" />
+          </Key>
+          <Property Name="CMT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hoten" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ngaysinh" Type="datetime" Nullable="false" />
+          <Property Name="Gioitinh" Type="bit" Nullable="false" />
+          <Property Name="Diachi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loaiphong">
+          <Key>
+            <PropertyRef Name="Loaiphong" />
+          </Key>
+          <Property Name="Loaiphong" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gia" Type="float" Nullable="false" />
+          <Property Name="Hinhanh" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Mota" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nhanvien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Hoten" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gioitinh" Type="bit" Nullable="false" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Hinh" Type="text" Nullable="false" />
+          <Property Name="Ghichu" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Phong">
+          <Key>
+            <PropertyRef Name="Sophong" />
+          </Key>
+          <Property Name="Sophong" Type="bigint" Nullable="false" />
+          <Property Name="Tinhtrang" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Loaiphong" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ghichu" Type="ntext" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="Taikhoan" />
+          </Key>
+          <Property Name="Taikhoan" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaNV" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Matkhau" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nhom" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Ngaylap" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Bill_Customer">
+          <End Role="Khachhang" Type="Self.Khachhang" Multiplicity="1" />
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khachhang">
+              <PropertyRef Name="CMT" />
+            </Principal>
+            <Dependent Role="Datphong">
+              <PropertyRef Name="CMT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_Employees">
+          <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="1" />
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhanvien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="Datphong">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chitietdatdichvu_Dichvu">
+          <End Role="Dichvu" Type="Self.Dichvu" Multiplicity="1" />
+          <End Role="Chitietdatdichvu" Type="Self.Chitietdatdichvu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dichvu">
+              <PropertyRef Name="IDDV" />
+            </Principal>
+            <Dependent Role="Chitietdatdichvu">
+              <PropertyRef Name="IDDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailBillR_BillRoom1">
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="1" />
+          <End Role="Chitietdatphong" Type="Self.Chitietdatphong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datphong">
+              <PropertyRef Name="IDDAT" />
+            </Principal>
+            <Dependent Role="Chitietdatphong">
+              <PropertyRef Name="IDDAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailBillR_Room">
+          <End Role="Phong" Type="Self.Phong" Multiplicity="1" />
+          <End Role="Chitietdatphong" Type="Self.Chitietdatphong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phong">
+              <PropertyRef Name="Sophong" />
+            </Principal>
+            <Dependent Role="Chitietdatphong">
+              <PropertyRef Name="Sophong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailBillService_Bill">
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="1" />
+          <End Role="Chitietdatdichvu" Type="Self.Chitietdatdichvu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datphong">
+              <PropertyRef Name="IDDAT" />
+            </Principal>
+            <Dependent Role="Chitietdatdichvu">
+              <PropertyRef Name="IDDAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hoadon_Datphong">
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="1" />
+          <End Role="Hoadon" Type="Self.Hoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datphong">
+              <PropertyRef Name="IDDAT" />
+            </Principal>
+            <Dependent Role="Hoadon">
+              <PropertyRef Name="IDDAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_Nhanvien">
+          <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhanvien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_TypeRoom">
+          <End Role="Loaiphong" Type="Self.Loaiphong" Multiplicity="1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loaiphong">
+              <PropertyRef Name="Loaiphong" />
+            </Principal>
+            <Dependent Role="Phong">
+              <PropertyRef Name="Loaiphong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="KTMANV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="manv" Type="nchar" Mode="In" />
+        </Function>
+        <Function Name="LOADDEVICEROOM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="number" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="LOADROOMID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Number" Type="int" Mode="In" />
+        </Function>
+        <Function Name="LOADROOMRANH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="loaip" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="LuuHoaDon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tienphong" Type="float" Mode="In" />
+          <Parameter Name="tiendv" Type="float" Mode="In" />
+          <Parameter Name="vat" Type="float" Mode="In" />
+          <Parameter Name="khuyemai" Type="float" Mode="In" />
+          <Parameter Name="ngaylap" Type="datetime" Mode="In" />
+          <Parameter Name="IDdat" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SEARCHUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hoten" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_CTDATDV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idhd" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_CTDATPHONG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idhd" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="SP_LOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accout" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_THEMDAT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ngaylap" Type="nvarchar" Mode="In" />
+          <Parameter Name="manv" Type="nchar" Mode="In" />
+          <Parameter Name="cmt" Type="nvarchar" Mode="In" />
+          <Parameter Name="ghichu" Type="ntext" Mode="In" />
+        </Function>
+        <Function Name="THEMDV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Tendv" Type="nvarchar" Mode="In" />
+          <Parameter Name="gia" Type="float" Mode="In" />
+          <Parameter Name="dvt" Type="nchar" Mode="In" />
+          <Parameter Name="hinh" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="mota" Type="ntext" Mode="In" />
+        </Function>
+        <Function Name="THONGKETHANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ngay" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="TIENDICHVU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idhd" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="TIENPHONG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idhd" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="TIENTHEOHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="TIMKH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CMT" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="QLKhachsanModelStoreContainer">
+          <EntitySet Name="Chitietdatdichvu" EntityType="Self.Chitietdatdichvu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chitietdatphong" EntityType="Self.Chitietdatphong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Datphong" EntityType="Self.Datphong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dichvu" EntityType="Self.Dichvu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hoadon" EntityType="Self.Hoadon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Khachhang" EntityType="Self.Khachhang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loaiphong" EntityType="Self.Loaiphong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nhanvien" EntityType="Self.Nhanvien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phong" EntityType="Self.Phong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Bill_Customer" Association="Self.FK_Bill_Customer">
+            <End Role="Khachhang" EntitySet="Khachhang" />
+            <End Role="Datphong" EntitySet="Datphong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_Employees" Association="Self.FK_Bill_Employees">
+            <End Role="Nhanvien" EntitySet="Nhanvien" />
+            <End Role="Datphong" EntitySet="Datphong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chitietdatdichvu_Dichvu" Association="Self.FK_Chitietdatdichvu_Dichvu">
+            <End Role="Dichvu" EntitySet="Dichvu" />
+            <End Role="Chitietdatdichvu" EntitySet="Chitietdatdichvu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailBillR_BillRoom1" Association="Self.FK_DetailBillR_BillRoom1">
+            <End Role="Datphong" EntitySet="Datphong" />
+            <End Role="Chitietdatphong" EntitySet="Chitietdatphong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailBillR_Room" Association="Self.FK_DetailBillR_Room">
+            <End Role="Phong" EntitySet="Phong" />
+            <End Role="Chitietdatphong" EntitySet="Chitietdatphong" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailBillService_Bill" Association="Self.FK_DetailBillService_Bill">
+            <End Role="Datphong" EntitySet="Datphong" />
+            <End Role="Chitietdatdichvu" EntitySet="Chitietdatdichvu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hoadon_Datphong" Association="Self.FK_Hoadon_Datphong">
+            <End Role="Datphong" EntitySet="Datphong" />
+            <End Role="Hoadon" EntitySet="Hoadon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_Nhanvien" Association="Self.FK_Login_Nhanvien">
+            <End Role="Nhanvien" EntitySet="Nhanvien" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_TypeRoom" Association="Self.FK_Rooms_TypeRoom">
+            <End Role="Loaiphong" EntitySet="Loaiphong" />
+            <End Role="Phong" EntitySet="Phong" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLKhachsanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Chitietdatdichvu">
+          <Key>
+            <PropertyRef Name="IDDV" />
+            <PropertyRef Name="IDDAT" />
+          </Key>
+          <Property Name="IDDV" Type="Int64" Nullable="false" />
+          <Property Name="IDDAT" Type="Int64" Nullable="false" />
+          <Property Name="Soluong" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dichvu" Relationship="Self.FK_Chitietdatdichvu_Dichvu" FromRole="Chitietdatdichvu" ToRole="Dichvu" />
+          <NavigationProperty Name="Datphong" Relationship="Self.FK_DetailBillService_Bill" FromRole="Chitietdatdichvu" ToRole="Datphong" />
+        </EntityType>
+        <EntityType Name="Chitietdatphong">
+          <Key>
+            <PropertyRef Name="Sophong" />
+            <PropertyRef Name="IDDAT" />
+          </Key>
+          <Property Name="Sophong" Type="Int64" Nullable="false" />
+          <Property Name="IDDAT" Type="Int64" Nullable="false" />
+          <Property Name="Ngayden" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ngaydi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Datphong" Relationship="Self.FK_DetailBillR_BillRoom1" FromRole="Chitietdatphong" ToRole="Datphong" />
+          <NavigationProperty Name="Phong" Relationship="Self.FK_DetailBillR_Room" FromRole="Chitietdatphong" ToRole="Phong" />
+        </EntityType>
+        <EntityType Name="Datphong">
+          <Key>
+            <PropertyRef Name="IDDAT" />
+          </Key>
+          <Property Name="IDDAT" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ngaydat" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CMT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Chitietdatdichvus" Relationship="Self.FK_DetailBillService_Bill" FromRole="Datphong" ToRole="Chitietdatdichvu" />
+          <NavigationProperty Name="Chitietdatphongs" Relationship="Self.FK_DetailBillR_BillRoom1" FromRole="Datphong" ToRole="Chitietdatphong" />
+          <NavigationProperty Name="Khachhang" Relationship="Self.FK_Bill_Customer" FromRole="Datphong" ToRole="Khachhang" />
+          <NavigationProperty Name="Nhanvien" Relationship="Self.FK_Bill_Employees" FromRole="Datphong" ToRole="Nhanvien" />
+          <NavigationProperty Name="Hoadons" Relationship="Self.FK_Hoadon_Datphong" FromRole="Datphong" ToRole="Hoadon" />
+        </EntityType>
+        <EntityType Name="Dichvu">
+          <Key>
+            <PropertyRef Name="IDDV" />
+          </Key>
+          <Property Name="IDDV" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GiaDV" Type="Double" Nullable="false" />
+          <Property Name="DVT" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Hinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Chitietdatdichvus" Relationship="Self.FK_Chitietdatdichvu_Dichvu" FromRole="Dichvu" ToRole="Chitietdatdichvu" />
+        </EntityType>
+        <EntityType Name="Hoadon">
+          <Key>
+            <PropertyRef Name="MaHD" />
+          </Key>
+          <Property Name="MaHD" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tienphong" Type="Double" Nullable="false" />
+          <Property Name="Tiendichvu" Type="Double" Nullable="false" />
+          <Property Name="VAT" Type="Double" Nullable="false" />
+          <Property Name="Khuyenmai" Type="Double" />
+          <Property Name="Ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IDDAT" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Datphong" Relationship="Self.FK_Hoadon_Datphong" FromRole="Hoadon" ToRole="Datphong" />
+        </EntityType>
+        <EntityType Name="Khachhang">
+          <Key>
+            <PropertyRef Name="CMT" />
+          </Key>
+          <Property Name="CMT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ngaysinh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Gioitinh" Type="Boolean" Nullable="false" />
+          <Property Name="Diachi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Datphongs" Relationship="Self.FK_Bill_Customer" FromRole="Khachhang" ToRole="Datphong" />
+        </EntityType>
+        <EntityType Name="Loaiphong">
+          <Key>
+            <PropertyRef Name="Loaiphong1" />
+          </Key>
+          <Property Name="Loaiphong1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gia" Type="Double" Nullable="false" />
+          <Property Name="Hinhanh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Phongs" Relationship="Self.FK_Rooms_TypeRoom" FromRole="Loaiphong" ToRole="Phong" />
+        </EntityType>
+        <EntityType Name="Nhanvien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Hoten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gioitinh" Type="Boolean" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Datphongs" Relationship="Self.FK_Bill_Employees" FromRole="Nhanvien" ToRole="Datphong" />
+          <NavigationProperty Name="TaiKhoans" Relationship="Self.FK_Login_Nhanvien" FromRole="Nhanvien" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="Phong">
+          <Key>
+            <PropertyRef Name="Sophong" />
+          </Key>
+          <Property Name="Sophong" Type="Int64" Nullable="false" />
+          <Property Name="Tinhtrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Loaiphong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ghichu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Chitietdatphongs" Relationship="Self.FK_DetailBillR_Room" FromRole="Phong" ToRole="Chitietdatphong" />
+          <NavigationProperty Name="Loaiphong1" Relationship="Self.FK_Rooms_TypeRoom" FromRole="Phong" ToRole="Loaiphong" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="Taikhoan1" />
+          </Key>
+          <Property Name="Taikhoan1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaNV" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Matkhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nhom" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Ngaylap" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Nhanvien" Relationship="Self.FK_Login_Nhanvien" FromRole="TaiKhoan" ToRole="Nhanvien" />
+        </EntityType>
+        <Association Name="FK_Chitietdatdichvu_Dichvu">
+          <End Role="Dichvu" Type="Self.Dichvu" Multiplicity="1" />
+          <End Role="Chitietdatdichvu" Type="Self.Chitietdatdichvu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dichvu">
+              <PropertyRef Name="IDDV" />
+            </Principal>
+            <Dependent Role="Chitietdatdichvu">
+              <PropertyRef Name="IDDV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailBillService_Bill">
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="1" />
+          <End Role="Chitietdatdichvu" Type="Self.Chitietdatdichvu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datphong">
+              <PropertyRef Name="IDDAT" />
+            </Principal>
+            <Dependent Role="Chitietdatdichvu">
+              <PropertyRef Name="IDDAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailBillR_BillRoom1">
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="1" />
+          <End Role="Chitietdatphong" Type="Self.Chitietdatphong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datphong">
+              <PropertyRef Name="IDDAT" />
+            </Principal>
+            <Dependent Role="Chitietdatphong">
+              <PropertyRef Name="IDDAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DetailBillR_Room">
+          <End Role="Phong" Type="Self.Phong" Multiplicity="1" />
+          <End Role="Chitietdatphong" Type="Self.Chitietdatphong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phong">
+              <PropertyRef Name="Sophong" />
+            </Principal>
+            <Dependent Role="Chitietdatphong">
+              <PropertyRef Name="Sophong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_Customer">
+          <End Role="Khachhang" Type="Self.Khachhang" Multiplicity="1" />
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khachhang">
+              <PropertyRef Name="CMT" />
+            </Principal>
+            <Dependent Role="Datphong">
+              <PropertyRef Name="CMT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bill_Employees">
+          <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="1" />
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhanvien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="Datphong">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hoadon_Datphong">
+          <End Role="Datphong" Type="Self.Datphong" Multiplicity="1" />
+          <End Role="Hoadon" Type="Self.Hoadon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datphong">
+              <PropertyRef Name="IDDAT" />
+            </Principal>
+            <Dependent Role="Hoadon">
+              <PropertyRef Name="IDDAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_TypeRoom">
+          <End Role="Loaiphong" Type="Self.Loaiphong" Multiplicity="1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loaiphong">
+              <PropertyRef Name="Loaiphong1" />
+            </Principal>
+            <Dependent Role="Phong">
+              <PropertyRef Name="Loaiphong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_Nhanvien">
+          <End Role="Nhanvien" Type="Self.Nhanvien" Multiplicity="1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nhanvien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLKhachsanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Chitietdatdichvus" EntityType="Self.Chitietdatdichvu" />
+          <EntitySet Name="Chitietdatphongs" EntityType="Self.Chitietdatphong" />
+          <EntitySet Name="Datphongs" EntityType="Self.Datphong" />
+          <EntitySet Name="Dichvus" EntityType="Self.Dichvu" />
+          <EntitySet Name="Hoadons" EntityType="Self.Hoadon" />
+          <EntitySet Name="Khachhangs" EntityType="Self.Khachhang" />
+          <EntitySet Name="Loaiphongs" EntityType="Self.Loaiphong" />
+          <EntitySet Name="Nhanviens" EntityType="Self.Nhanvien" />
+          <EntitySet Name="Phongs" EntityType="Self.Phong" />
+          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+          <AssociationSet Name="FK_Chitietdatdichvu_Dichvu" Association="Self.FK_Chitietdatdichvu_Dichvu">
+            <End Role="Dichvu" EntitySet="Dichvus" />
+            <End Role="Chitietdatdichvu" EntitySet="Chitietdatdichvus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailBillService_Bill" Association="Self.FK_DetailBillService_Bill">
+            <End Role="Datphong" EntitySet="Datphongs" />
+            <End Role="Chitietdatdichvu" EntitySet="Chitietdatdichvus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailBillR_BillRoom1" Association="Self.FK_DetailBillR_BillRoom1">
+            <End Role="Datphong" EntitySet="Datphongs" />
+            <End Role="Chitietdatphong" EntitySet="Chitietdatphongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DetailBillR_Room" Association="Self.FK_DetailBillR_Room">
+            <End Role="Phong" EntitySet="Phongs" />
+            <End Role="Chitietdatphong" EntitySet="Chitietdatphongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_Customer" Association="Self.FK_Bill_Customer">
+            <End Role="Khachhang" EntitySet="Khachhangs" />
+            <End Role="Datphong" EntitySet="Datphongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bill_Employees" Association="Self.FK_Bill_Employees">
+            <End Role="Nhanvien" EntitySet="Nhanviens" />
+            <End Role="Datphong" EntitySet="Datphongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hoadon_Datphong" Association="Self.FK_Hoadon_Datphong">
+            <End Role="Datphong" EntitySet="Datphongs" />
+            <End Role="Hoadon" EntitySet="Hoadons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_TypeRoom" Association="Self.FK_Rooms_TypeRoom">
+            <End Role="Loaiphong" EntitySet="Loaiphongs" />
+            <End Role="Phong" EntitySet="Phongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_Nhanvien" Association="Self.FK_Login_Nhanvien">
+            <End Role="Nhanvien" EntitySet="Nhanviens" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <FunctionImport Name="KTMANV" ReturnType="Collection(QLKhachsanModel.KTMANV_Result)">
+            <Parameter Name="manv" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LOADDEVICEROOM">
+            <Parameter Name="number" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="LOADROOMID" ReturnType="Collection(QLKhachsanModel.LOADROOMID_Result)">
+            <Parameter Name="Number" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="LOADROOMRANH" ReturnType="Collection(QLKhachsanModel.LOADROOMRANH_Result)">
+            <Parameter Name="loaip" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LuuHoaDon">
+            <Parameter Name="tienphong" Mode="In" Type="Double" />
+            <Parameter Name="tiendv" Mode="In" Type="Double" />
+            <Parameter Name="vat" Mode="In" Type="Double" />
+            <Parameter Name="khuyemai" Mode="In" Type="Double" />
+            <Parameter Name="ngaylap" Mode="In" Type="DateTime" />
+            <Parameter Name="IDdat" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SEARCHUSER" ReturnType="Collection(QLKhachsanModel.SEARCHUSER_Result)">
+            <Parameter Name="hoten" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CTDATDV" ReturnType="Collection(QLKhachsanModel.SP_CTDATDV_Result)">
+            <Parameter Name="idhd" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_CTDATPHONG" ReturnType="Collection(QLKhachsanModel.SP_CTDATPHONG_Result)">
+            <Parameter Name="idhd" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="SP_LOGIN" ReturnType="Collection(QLKhachsanModel.SP_LOGIN_Result)">
+            <Parameter Name="accout" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_THEMDAT">
+            <Parameter Name="ngaylap" Mode="In" Type="String" />
+            <Parameter Name="manv" Mode="In" Type="String" />
+            <Parameter Name="cmt" Mode="In" Type="String" />
+            <Parameter Name="ghichu" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="THEMDV">
+            <Parameter Name="Tendv" Mode="In" Type="String" />
+            <Parameter Name="gia" Mode="In" Type="Double" />
+            <Parameter Name="dvt" Mode="In" Type="String" />
+            <Parameter Name="hinh" Mode="In" Type="String" />
+            <Parameter Name="mota" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="THONGKETHANG" ReturnType="Collection(QLKhachsanModel.THONGKETHANG_Result)">
+            <Parameter Name="ngay" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TIENDICHVU" ReturnType="Collection(Double)">
+            <Parameter Name="idhd" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="TIENPHONG" ReturnType="Collection(Double)">
+            <Parameter Name="idhd" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="TIENTHEOHD" ReturnType="Collection(Double)">
+            <Parameter Name="id" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="TIMKH" ReturnType="Collection(QLKhachsanModel.TIMKH_Result)">
+            <Parameter Name="CMT" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="KTMANV_Result">
+          <Property Type="String" Name="MaNV" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Hoten" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Gioitinh" Nullable="false" />
+          <Property Type="String" Name="SDT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Hinh" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Ghichu" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="LOADROOMID_Result">
+          <Property Type="Int64" Name="Sophong" Nullable="false" />
+          <Property Type="String" Name="Tinhtrang" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Loaiphong" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="LOADROOMRANH_Result">
+          <Property Type="Int64" Name="Sophong" Nullable="false" />
+          <Property Type="String" Name="Tinhtrang" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Loaiphong" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Ghichu" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="SEARCHUSER_Result">
+          <Property Type="String" Name="MaNV" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Hoten" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Gioitinh" Nullable="false" />
+          <Property Type="String" Name="SDT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Hinh" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Ghichu" Nullable="true" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="SP_CTDATDV_Result">
+          <Property Type="Int64" Name="IDDV" Nullable="false" />
+          <Property Type="Int64" Name="IDDAT" Nullable="false" />
+          <Property Type="Int32" Name="Soluong" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="SP_CTDATPHONG_Result">
+          <Property Type="Int64" Name="Sophong" Nullable="false" />
+          <Property Type="Int64" Name="IDDAT" Nullable="false" />
+          <Property Type="DateTime" Name="Ngayden" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Ngaydi" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="SP_LOGIN_Result">
+          <Property Type="String" Name="MaNV" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="Hoten" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Nhom" Nullable="false" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="THONGKETHANG_Result">
+          <Property Type="Int64" Name="MaHD" Nullable="false" />
+          <Property Type="Double" Name="Tienphong" Nullable="false" />
+          <Property Type="Double" Name="Tiendichvu" Nullable="false" />
+          <Property Type="Double" Name="VAT" Nullable="false" />
+          <Property Type="Double" Name="Khuyenmai" Nullable="true" />
+          <Property Type="DateTime" Name="Ngaylap" Nullable="false" Precision="23" />
+          <Property Type="Int64" Name="IDDAT" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="TIMKH_Result">
+          <Property Type="String" Name="CMT" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Hoten" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="Ngaysinh" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="Gioitinh" Nullable="false" />
+          <Property Type="String" Name="Diachi" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="SDT" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLKhachsanModelStoreContainer" CdmEntityContainer="QLKhachsanEntities">
+          <EntitySetMapping Name="Chitietdatdichvus">
+            <EntityTypeMapping TypeName="QLKhachsanModel.Chitietdatdichvu">
+              <MappingFragment StoreEntitySet="Chitietdatdichvu">
+                <ScalarProperty Name="IDDV" ColumnName="IDDV" />
+                <ScalarProperty Name="IDDAT" ColumnName="IDDAT" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chitietdatphongs">
+            <EntityTypeMapping TypeName="QLKhachsanModel.Chitietdatphong">
+              <MappingFragment StoreEntitySet="Chitietdatphong">
+                <ScalarProperty Name="Sophong" ColumnName="Sophong" />
+                <ScalarProperty Name="IDDAT" ColumnName="IDDAT" />
+                <ScalarProperty Name="Ngayden" ColumnName="Ngayden" />
+                <ScalarProperty Name="Ngaydi" ColumnName="Ngaydi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Datphongs">
+            <EntityTypeMapping TypeName="QLKhachsanModel.Datphong">
+              <MappingFragment StoreEntitySet="Datphong">
+                <ScalarProperty Name="IDDAT" ColumnName="IDDAT" />
+                <ScalarProperty Name="Ngaydat" ColumnName="Ngaydat" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="CMT" ColumnName="CMT" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dichvus">
+            <EntityTypeMapping TypeName="QLKhachsanModel.Dichvu">
+              <MappingFragment StoreEntitySet="Dichvu">
+                <ScalarProperty Name="IDDV" ColumnName="IDDV" />
+                <ScalarProperty Name="TenDV" ColumnName="TenDV" />
+                <ScalarProperty Name="GiaDV" ColumnName="GiaDV" />
+                <ScalarProperty Name="DVT" ColumnName="DVT" />
+                <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hoadons">
+            <EntityTypeMapping TypeName="QLKhachsanModel.Hoadon">
+              <MappingFragment StoreEntitySet="Hoadon">
+                <ScalarProperty Name="MaHD" ColumnName="MaHD" />
+                <ScalarProperty Name="Tienphong" ColumnName="Tienphong" />
+                <ScalarProperty Name="Tiendichvu" ColumnName="Tiendichvu" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="Khuyenmai" ColumnName="Khuyenmai" />
+                <ScalarProperty Name="Ngaylap" ColumnName="Ngaylap" />
+                <ScalarProperty Name="IDDAT" ColumnName="IDDAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Khachhangs">
+            <EntityTypeMapping TypeName="QLKhachsanModel.Khachhang">
+              <MappingFragment StoreEntitySet="Khachhang">
+                <ScalarProperty Name="CMT" ColumnName="CMT" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loaiphongs">
+            <EntityTypeMapping TypeName="QLKhachsanModel.Loaiphong">
+              <MappingFragment StoreEntitySet="Loaiphong">
+                <ScalarProperty Name="Loaiphong1" ColumnName="Loaiphong" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="Hinhanh" ColumnName="Hinhanh" />
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nhanviens">
+            <EntityTypeMapping TypeName="QLKhachsanModel.Nhanvien">
+              <MappingFragment StoreEntitySet="Nhanvien">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phongs">
+            <EntityTypeMapping TypeName="QLKhachsanModel.Phong">
+              <MappingFragment StoreEntitySet="Phong">
+                <ScalarProperty Name="Sophong" ColumnName="Sophong" />
+                <ScalarProperty Name="Tinhtrang" ColumnName="Tinhtrang" />
+                <ScalarProperty Name="Loaiphong" ColumnName="Loaiphong" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="QLKhachsanModel.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="Taikhoan1" ColumnName="Taikhoan" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="Matkhau" ColumnName="Matkhau" />
+                <ScalarProperty Name="Nhom" ColumnName="Nhom" />
+                <ScalarProperty Name="Ngaylap" ColumnName="Ngaylap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="KTMANV" FunctionName="QLKhachsanModel.Store.KTMANV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhachsanModel.KTMANV_Result">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LOADDEVICEROOM" FunctionName="QLKhachsanModel.Store.LOADDEVICEROOM" />
+          <FunctionImportMapping FunctionImportName="LOADROOMID" FunctionName="QLKhachsanModel.Store.LOADROOMID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhachsanModel.LOADROOMID_Result">
+                <ScalarProperty Name="Sophong" ColumnName="Sophong" />
+                <ScalarProperty Name="Tinhtrang" ColumnName="Tinhtrang" />
+                <ScalarProperty Name="Loaiphong" ColumnName="Loaiphong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LOADROOMRANH" FunctionName="QLKhachsanModel.Store.LOADROOMRANH">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhachsanModel.LOADROOMRANH_Result">
+                <ScalarProperty Name="Sophong" ColumnName="Sophong" />
+                <ScalarProperty Name="Tinhtrang" ColumnName="Tinhtrang" />
+                <ScalarProperty Name="Loaiphong" ColumnName="Loaiphong" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LuuHoaDon" FunctionName="QLKhachsanModel.Store.LuuHoaDon" />
+          <FunctionImportMapping FunctionImportName="SEARCHUSER" FunctionName="QLKhachsanModel.Store.SEARCHUSER">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhachsanModel.SEARCHUSER_Result">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Hinh" ColumnName="Hinh" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CTDATDV" FunctionName="QLKhachsanModel.Store.SP_CTDATDV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhachsanModel.SP_CTDATDV_Result">
+                <ScalarProperty Name="IDDV" ColumnName="IDDV" />
+                <ScalarProperty Name="IDDAT" ColumnName="IDDAT" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_CTDATPHONG" FunctionName="QLKhachsanModel.Store.SP_CTDATPHONG">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhachsanModel.SP_CTDATPHONG_Result">
+                <ScalarProperty Name="Sophong" ColumnName="Sophong" />
+                <ScalarProperty Name="IDDAT" ColumnName="IDDAT" />
+                <ScalarProperty Name="Ngayden" ColumnName="Ngayden" />
+                <ScalarProperty Name="Ngaydi" ColumnName="Ngaydi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_LOGIN" FunctionName="QLKhachsanModel.Store.SP_LOGIN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhachsanModel.SP_LOGIN_Result">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="Nhom" ColumnName="Nhom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_THEMDAT" FunctionName="QLKhachsanModel.Store.SP_THEMDAT" />
+          <FunctionImportMapping FunctionImportName="THEMDV" FunctionName="QLKhachsanModel.Store.THEMDV" />
+          <FunctionImportMapping FunctionImportName="THONGKETHANG" FunctionName="QLKhachsanModel.Store.THONGKETHANG">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhachsanModel.THONGKETHANG_Result">
+                <ScalarProperty Name="MaHD" ColumnName="MaHD" />
+                <ScalarProperty Name="Tienphong" ColumnName="Tienphong" />
+                <ScalarProperty Name="Tiendichvu" ColumnName="Tiendichvu" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="Khuyenmai" ColumnName="Khuyenmai" />
+                <ScalarProperty Name="Ngaylap" ColumnName="Ngaylap" />
+                <ScalarProperty Name="IDDAT" ColumnName="IDDAT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TIENDICHVU" FunctionName="QLKhachsanModel.Store.TIENDICHVU" />
+          <FunctionImportMapping FunctionImportName="TIENPHONG" FunctionName="QLKhachsanModel.Store.TIENPHONG" />
+          <FunctionImportMapping FunctionImportName="TIENTHEOHD" FunctionName="QLKhachsanModel.Store.TIENTHEOHD" />
+          <FunctionImportMapping FunctionImportName="TIMKH" FunctionName="QLKhachsanModel.Store.TIMKH">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLKhachsanModel.TIMKH_Result">
+                <ScalarProperty Name="CMT" ColumnName="CMT" />
+                <ScalarProperty Name="Hoten" ColumnName="Hoten" />
+                <ScalarProperty Name="Ngaysinh" ColumnName="Ngaysinh" />
+                <ScalarProperty Name="Gioitinh" ColumnName="Gioitinh" />
+                <ScalarProperty Name="Diachi" ColumnName="Diachi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

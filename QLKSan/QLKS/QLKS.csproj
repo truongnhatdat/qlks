@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{25A9F2D3-91D1-4907-8078-B2034AF97993}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QLKS</RootNamespace>
+    <AssemblyName>QLKS</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.BonusSkins.v18.1" />
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v18.1" />
+    <Reference Include="DevExpress.DataAccess.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dialogs.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.1.Core" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Export, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.1" />
+    <Reference Include="DevExpress.Utils.v18.1.UI, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v18.1" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDialogs.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.1" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Core, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.1.Extensions, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="GlobalLink.Connect, Version=4.18.5.0, Culture=neutral, PublicKeyToken=946d606070618fd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\GlobalLink.Connect.4.18.5\lib\net46\GlobalLink.Connect.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.12.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.12\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="MstHtmlEditor">
+      <HintPath>..\..\..\Downloads\MstHtmlEditor.NET4\HtmlEditor Control for NET4\MstHtmlEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.NameResolution, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.NameResolution.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.NetworkInformation, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.NetworkInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Ping, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.Ping.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Primitives, Version=4.0.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Requests, Version=4.0.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.Requests.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Security, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\QLKhachsanWinform\bin\Debug\System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WinFormHtmlEditor">
+      <HintPath>..\..\..\Downloads\WinHTMLEditorControl-Trial\Main Control DLL\.NET 4.0\WinFormHtmlEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="INDON\FormInHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="INDON\FormInHD.Designer.cs">
+      <DependentUpon>FormInHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="INDON\hoadon.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="INDON\hoadon.Designer.cs">
+      <DependentUpon>hoadon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="INHOADON\chitietdatdv.cs" />
+    <Compile Include="INHOADON\chitietdatphong.cs" />
+    <Compile Include="INHOADON\Chitiethoadon.cs" />
+    <Compile Include="INHOADON\Chitiethoadondv.cs" />
+    <Compile Include="INHOADON\Chitiethoadonphong.cs" />
+    <Compile Include="INHOADON\Employee.cs" />
+    <Compile Include="INHOADON\Hoadon.cs" />
+    <Compile Include="INHOADON\Login.cs" />
+    <Compile Include="INHOADON\LuuHD.cs" />
+    <Compile Include="INHOADON\taikhoan.cs" />
+    <Compile Include="LOGIN\TaoTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LOGIN\TaoTK.Designer.cs">
+      <DependentUpon>TaoTK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANTRI\Formchinhsach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QUANTRI\Formchinhsach.Designer.cs">
+      <DependentUpon>Formchinhsach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANTRI\FormDatphong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QUANTRI\FormDatphong.Designer.cs">
+      <DependentUpon>FormDatphong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LOGIN\Formdn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LOGIN\Formdn.Designer.cs">
+      <DependentUpon>Formdn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LOGIN\FormDoiMK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LOGIN\FormDoiMK.Designer.cs">
+      <DependentUpon>FormDoiMK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANTRI\Formdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QUANTRI\Formdv.Designer.cs">
+      <DependentUpon>Formdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANTRI\FormHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QUANTRI\FormHoaDon.Designer.cs">
+      <DependentUpon>FormHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANTRI\FormKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QUANTRI\FormKhachHang.Designer.cs">
+      <DependentUpon>FormKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANTRI\FormLoaiPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QUANTRI\FormLoaiPhong.Designer.cs">
+      <DependentUpon>FormLoaiPhong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANTRI\Formnv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QUANTRI\Formnv.Designer.cs">
+      <DependentUpon>Formnv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANTRI\FormRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QUANTRI\FormRoom.Designer.cs">
+      <DependentUpon>FormRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANTRI\FormThietBi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QUANTRI\FormThietBi.Designer.cs">
+      <DependentUpon>FormThietBi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="REPORT\FormInBaoCao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="REPORT\FormInBaoCao.Designer.cs">
+      <DependentUpon>FormInBaoCao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="REPORT\rptbaocao.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REPORT\rptbaocao.Designer.cs">
+      <DependentUpon>rptbaocao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="THONGKE\FormThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="THONGKE\FormThongKe.Designer.cs">
+      <DependentUpon>FormThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="INHOADON\Datphong.cs" />
+    <Compile Include="INHOADON\CTDDV.cs" />
+    <Compile Include="INHOADON\CTDP.cs" />
+    <Compile Include="INHOADON\Customer.cs" />
+    <Compile Include="INHOADON\Device.cs" />
+    <Compile Include="INHOADON\LoaiPhong.cs" />
+    <Compile Include="INHOADON\Room.cs" />
+    <Compile Include="INHOADON\Service.cs" />
+    <Compile Include="INHOADON\ThongKeTien.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="INDON\FormInHD.resx">
+      <DependentUpon>FormInHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="INDON\hoadon.resx">
+      <DependentUpon>hoadon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LOGIN\TaoTK.resx">
+      <DependentUpon>TaoTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANTRI\Formchinhsach.resx">
+      <DependentUpon>Formchinhsach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANTRI\FormDatphong.resx">
+      <DependentUpon>FormDatphong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LOGIN\Formdn.resx">
+      <DependentUpon>Formdn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LOGIN\FormDoiMK.resx">
+      <DependentUpon>FormDoiMK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANTRI\Formdv.resx">
+      <DependentUpon>Formdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANTRI\FormHoaDon.resx">
+      <DependentUpon>FormHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANTRI\FormKhachHang.resx">
+      <DependentUpon>FormKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANTRI\FormLoaiPhong.resx">
+      <DependentUpon>FormLoaiPhong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANTRI\Formnv.resx">
+      <DependentUpon>Formnv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANTRI\FormRoom.resx">
+      <DependentUpon>FormRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANTRI\FormThietBi.resx">
+      <DependentUpon>FormThietBi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORT\FormInBaoCao.resx">
+      <DependentUpon>FormInBaoCao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORT\rptbaocao.resx">
+      <DependentUpon>rptbaocao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="THONGKE\FormThongKe.resx">
+      <DependentUpon>FormThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IMAGE\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

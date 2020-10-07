@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13e2cd4500bd4575976d5844d285f4c8" Name="Diagram1">
+        <EntityTypeShape EntityType="QLKhachsanModel.Chitietdatdichvu" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhachsanModel.Chitietdatphong" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhachsanModel.Datphong" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhachsanModel.Dichvu" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhachsanModel.Hoadon" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhachsanModel.Khachhang" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhachsanModel.Loaiphong" Width="1.5" PointX="0.75" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhachsanModel.Nhanvien" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhachsanModel.Phong" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKhachsanModel.TaiKhoan" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <AssociationConnector Association="QLKhachsanModel.FK_Chitietdatdichvu_Dichvu" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhachsanModel.FK_DetailBillService_Bill" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhachsanModel.FK_DetailBillR_BillRoom1" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhachsanModel.FK_DetailBillR_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhachsanModel.FK_Bill_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhachsanModel.FK_Bill_Employees" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhachsanModel.FK_Hoadon_Datphong" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhachsanModel.FK_Rooms_TypeRoom" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKhachsanModel.FK_Login_Nhanvien" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
